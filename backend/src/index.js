@@ -14,7 +14,7 @@ function logRequests(request, response, next) {
 
   console.log(logLabel);
 
-  return next;
+  next();
 }
 
 function validateProjectId(request, response, next) {
@@ -32,6 +32,7 @@ app.use('/projects/:id', validateProjectId);
 
 app.get('/projects', (request, response) => {
   const { title } = request.query;
+  console.log('searchig');
 
   const results = title 
     ? projects.filter(project => project.title.includes(title))
